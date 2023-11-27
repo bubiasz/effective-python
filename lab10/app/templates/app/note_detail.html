@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block side_menu %}
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'note_update' note.pk %}">Update</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'note_delete' note.pk %}">Delete</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'note_list' %}">Back to note list</a>
+{% endblock %}
+
+{% block main_content %}
+    <h1>{{ note.name }}</h1>
+    <h4>Created by: {{ note.user }}</h4>
+    <div class="well well-lg">{{ note.text }}</div>
+{% endblock %}

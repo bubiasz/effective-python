@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block side_menu %}
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'topic_update' topic.pk %}">Update</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'topic_delete' topic.pk %}">Delete</a>
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'topic_list' %}">Back to topic list</a>
+{% endblock %}
+
+{% block main_content %}
+    <h1>{{ topic.name }}</h1>
+    <h4>Created by: {{ topic.public }}</h4>
+    <div class="well well-lg">Parent: {{ topic.parent }}</div>
+{% endblock %}

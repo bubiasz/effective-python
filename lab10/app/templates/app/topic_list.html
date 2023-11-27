@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block side_menu %}
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'topic_create' %}">Create</a>
+    {% for topic in object_list %}
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'topic_detail' topic.pk %}">{{ topic.name }}</a>
+    {% empty %}
+        <a class="list-group-item list-group-item-action list-group-item-light p-3">No topics yet</a>
+    {% endfor %}
+{% endblock %}

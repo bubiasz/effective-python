@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Topic deleting</h1>
+    <h3>Are you sure?</h3>
+    <p>You're about to delete <strong>{{ object }}</strong>. Please confirm.</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input class="btn btn-link"
+               type="button" value="Cancel"
+               onclick="window.history.go(-1);"/>
+        <input class="btn btn-danger" type="submit" value="Confirm"/>
+    </form>
+{% endblock %}
+
+{% block side_menu %}
+    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'topic_list' %}">Back to topic list</a>
+{% endblock %}
