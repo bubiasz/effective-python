@@ -10,9 +10,15 @@ from .views import (
     TopicCreateView,
     TopicUpdateView,
     TopicDeleteView,
+    login_page,
+    login_view,
+    logout_view,
 )
 
 urlpatterns = [
+    path('login/', login_page, name='login_page'),
+    path('login_view/', login_view, name='login_view'),
+    path('logout/', logout_view, name='logout'),
     path("note/", NoteListView.as_view(), name="note_list"),
     path("note/<int:pk>/", NoteDetailView.as_view(), name="note_detail"),
     path("note/create/", NoteCreateView.as_view(), name="note_create"),

@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}
+    <a class="btn btn-primary" style="margin: 0px;" href="{% url 'note_create' %}">+</a>
+{% endblock %}
+
 {% block side_menu %}
-    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'note_create' %}">Create</a>
     {% for note in object_list %}
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'note_detail' note.pk %}">{{ note.name }}</a>
     {% empty %}

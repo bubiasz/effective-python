@@ -7,7 +7,11 @@
 {% endblock %}
 
 {% block main_content %}
-    <h1>{{ note.name }}</h1>
-    <h4>Created by: {{ note.user }}</h4>
-    <div class="well well-lg">{{ note.text }}</div>
+    <div style="margin: 20px 100px 0 0; border-radius: 10px; padding: 10px;">
+        <h2 class="note-title">{{ note.name }}</h2>
+        <p>{{ note.text }}</p>
+
+        <p style="margin-bottom: 0px;">Created by: {{ note.user }}</p>
+        <p>Topic: {{ note.topic }}</p>
+    </div>
 {% endblock %}

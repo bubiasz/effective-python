@@ -13,7 +13,12 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light d-flex justify-content-between align-items-center">
+                    <!-- <div class=""> -->
+                    <p style="margin: 0px;">Notes app</p>
+                    {% block title %}{% endblock %}
+                    <!-- </div> -->
+                </div>
                 <div class="list-group list-group-flush">
                     {% block side_menu %}{% endblock %}
                 </div>
@@ -27,7 +32,13 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="{% url 'note_list' %}">Notes</a></li>
                                 <li class="nav-item active"><a class="nav-link" href="{% url 'topic_list' %}">Topics</a></li>
+                                {% if user.is_authenticated %}
+                                    <li class="nav-item active"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li class="nav-item active"><a class="nav-link" href="{% url 'login_page' %}">Login</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

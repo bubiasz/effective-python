@@ -7,7 +7,21 @@
 {% endblock %}
 
 {% block main_content %}
-    <h1>{{ topic.name }}</h1>
-    <h4>Created by: {{ topic.public }}</h4>
-    <div class="well well-lg">Parent: {{ topic.parent }}</div>
+    <div style="margin: 20px 100px 0 0; border-radius: 10px; padding: 10px;">
+        <h1>{{ topic.name }}</h1>
+        <p style="font-size: 14px; margin-bottom: 0px;">Parent: {{ topic.parent }}</p>
+        <p style="font-size: 14px;">Public: {{ topic.public }}</p>
+    </div>
+    {% for note in notes %}
+        <div style="margin: 20px 100px 0 0; border-radius: 10px; padding: 10px; background-color: #eee;">
+            <div style="text-align: right;">
+                <a href="{% url 'note_detail' note.pk %}" style="color: #007bff; text-decoration: none;">View note</a>
+            </div>
+            <h3 style="font-size: 18px; margin-bottom: 10px;">{{ note.name }}</h3>
+            <p style="font-size: 14px; margin-bottom: 0px;">Created by: {{ note.user }}</p>
+            <p style="font-size: 14px;">{{ note.text }}</p>
+        </div>
+    {% empty %}
+        <p>No notes available for this topic.</p>
+    {% endfor %}
 {% endblock %}
