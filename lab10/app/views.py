@@ -42,6 +42,11 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login_page')
+        return super().dispatch(request, *args, **kwargs)
+
 class NoteUpdateView(UserPassesTestMixin, UpdateView):
     model = Note
     fields = ['name', 'text', "topic"]
